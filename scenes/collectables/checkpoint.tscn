@@ -1,0 +1,93 @@
+[gd_scene load_steps=16 format=3 uid="uid://clias7ls7v6cy"]
+
+[ext_resource type="Texture2D" uid="uid://c0f4gicajxv2t" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 01.png" id="1_mmcei"]
+[ext_resource type="Script" path="res://scripts/collectable/checkpoint.gd" id="1_owxco"]
+[ext_resource type="Texture2D" uid="uid://f8byqoftlofv" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 02.png" id="2_vmhum"]
+[ext_resource type="Texture2D" uid="uid://r60ffncalm28" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 03.png" id="3_sj6k5"]
+[ext_resource type="Texture2D" uid="uid://ceej3jxqlvt1a" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 04.png" id="4_1iogn"]
+[ext_resource type="Texture2D" uid="uid://kqfocwju46f0" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 05.png" id="5_deell"]
+[ext_resource type="Texture2D" uid="uid://dulmxqdtdrrk2" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 06.png" id="6_ejtnu"]
+[ext_resource type="Texture2D" uid="uid://ch4etvaw88tv0" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 07.png" id="7_mvdqg"]
+[ext_resource type="Texture2D" uid="uid://chy6pnltxp7u7" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 08.png" id="8_7u14h"]
+[ext_resource type="Texture2D" uid="uid://43hh2dwt5rri" path="res://assets/Palm Tree Island/Sprites/Objects/Flag/Flag 09.png" id="9_kdvqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niq7i"]
+size = Vector2(34, 96)
+
+[sub_resource type="Animation" id="Animation_kg723"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_mmcei")]
+}
+
+[sub_resource type="Animation" id="Animation_cfk6f"]
+resource_name = "activated"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_mmcei"), ExtResource("1_mmcei"), ExtResource("1_mmcei"), ExtResource("2_vmhum"), ExtResource("3_sj6k5"), ExtResource("4_1iogn"), ExtResource("5_deell"), ExtResource("6_ejtnu"), ExtResource("7_mvdqg"), ExtResource("8_7u14h"), ExtResource("9_kdvqm")]
+}
+
+[sub_resource type="Animation" id="Animation_wftex"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_mmcei")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdt6x"]
+_data = {
+"RESET": SubResource("Animation_kg723"),
+"activated": SubResource("Animation_cfk6f"),
+"idle": SubResource("Animation_wftex")
+}
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_owxco")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mmcei")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_niq7i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wdt6x")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

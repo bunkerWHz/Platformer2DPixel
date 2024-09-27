@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://dq6wgo3ns6rse"]
+
+[ext_resource type="Script" path="res://scripts/collectable/sword.gd" id="1_bs3vk"]
+[ext_resource type="Texture2D" uid="uid://b1m2pu0r0bso5" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 01.png" id="2_hnxrt"]
+[ext_resource type="Texture2D" uid="uid://dyy3j52p6smas" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 02.png" id="3_5ksc1"]
+[ext_resource type="Texture2D" uid="uid://3qbg7vpamvh2" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 03.png" id="4_7xmu0"]
+[ext_resource type="Texture2D" uid="uid://ouj1ktn5bya7" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 04.png" id="5_dv6tu"]
+[ext_resource type="Texture2D" uid="uid://bu45qdus5jmj8" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 05.png" id="6_n2y7e"]
+[ext_resource type="Texture2D" uid="uid://iixh4c34frwo" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 06.png" id="7_a1syp"]
+[ext_resource type="Texture2D" uid="uid://ckwunglvkxaja" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 07.png" id="8_s3y6n"]
+[ext_resource type="Texture2D" uid="uid://c8usnqt8caqcl" path="res://assets/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 08.png" id="9_5o6rx"]
+[ext_resource type="AudioStream" uid="uid://cb6qp8lodvwj0" path="res://assets/Sounds/Powerup_4.wav" id="10_mxmvk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgsve"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnxrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5ksc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7xmu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dv6tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n2y7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a1syp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s3y6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5o6rx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vngo"]
+size = Vector2(19, 5)
+
+[node name="Sword" type="Area2D"]
+texture_filter = 1
+collision_layer = 0
+script = ExtResource("1_bs3vk")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jgsve")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_5vngo")
+
+[node name="PowerupSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mxmvk")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
+[connection signal="finished" from="PowerupSFX" to="." method="_on_powerup_sfx_finished"]

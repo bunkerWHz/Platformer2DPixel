@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckrknnwkqv46p"]
+
+[ext_resource type="Script" path="res://scripts/collectable/gold_coin.gd" id="1_5wwsp"]
+[ext_resource type="Texture2D" uid="uid://tsudh6smdhk5" path="res://assets/Pirate Treasure/Sprites/Coin Effect/01.png" id="2_r85ex"]
+[ext_resource type="Texture2D" uid="uid://ckwqb64b2y1uu" path="res://assets/Pirate Treasure/Sprites/Coin Effect/02.png" id="3_ec7c5"]
+[ext_resource type="Texture2D" uid="uid://djyaqj4l0tsew" path="res://assets/Pirate Treasure/Sprites/Coin Effect/03.png" id="4_madlq"]
+[ext_resource type="Texture2D" uid="uid://61h8bj60vqmc" path="res://assets/Pirate Treasure/Sprites/Gold Coin/01.png" id="5_v7snw"]
+[ext_resource type="Texture2D" uid="uid://d3ac06mw73ojc" path="res://assets/Pirate Treasure/Sprites/Gold Coin/02.png" id="6_d5a75"]
+[ext_resource type="Texture2D" uid="uid://d15splusum4lv" path="res://assets/Pirate Treasure/Sprites/Gold Coin/03.png" id="7_wtft1"]
+[ext_resource type="Texture2D" uid="uid://djmr0k37j542n" path="res://assets/Pirate Treasure/Sprites/Gold Coin/04.png" id="8_7ud0k"]
+[ext_resource type="AudioStream" uid="uid://dii7hqs5i2ytg" path="res://assets/Sounds/Collectibles_8.wav" id="9_6k080"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41svu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r85ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ec7c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_madlq")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"collect",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v7snw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d5a75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wtft1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ud0k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ts7j"]
+radius = 6.0
+
+[node name="GoldCoin" type="Area2D"]
+texture_filter = 1
+collision_layer = 0
+script = ExtResource("1_5wwsp")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_41svu")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ts7j")
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6k080")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

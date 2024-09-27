@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cly5y5ec7rndb"]
+
+[ext_resource type="Texture2D" uid="uid://dcn4b1bu35by2" path="res://assets/Wood and Paper UI/Sprites/Prefabs/5.png" id="1_ipivu"]
+[ext_resource type="FontFile" uid="uid://bv66qgmaxfwj4" path="res://assets/Fonts/Roboto/Roboto-Regular.ttf" id="2_6hrob"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7d6vk"]
+texture = ExtResource("1_ipivu")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+default_font = ExtResource("2_6hrob")
+default_font_size = 20
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_7d6vk")

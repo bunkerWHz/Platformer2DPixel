@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb3x31wtdefry"]
+
+[ext_resource type="Texture2D" uid="uid://cxeglcx6exf2n" path="res://assets/bolt.png" id="1_cdgco"]
+[ext_resource type="Script" path="res://scripts/weapons/throwings/bolt.gd" id="1_t2o3i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yitwv"]
+size = Vector2(210, 20)
+
+[node name="bolt" type="Area2D"]
+collision_layer = 257
+collision_mask = 2
+script = ExtResource("1_t2o3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cdgco")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_yitwv")
