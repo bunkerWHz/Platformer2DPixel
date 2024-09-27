@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 func TakeDamage(_damage:float)->void:
 	health -= _damage
-	print("hit sab")
+	print("sab was hit by something")
 	if health <= 0:
 		queue_free()
 
