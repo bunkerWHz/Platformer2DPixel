@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btt1jkmajqkdf" path="res://assets/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 04.png" id="8_qmjhd"]
 [ext_resource type="Texture2D" uid="uid://xp1sr3hqgmfn" path="res://assets/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 05.png" id="9_uygr3"]
 [ext_resource type="Texture2D" uid="uid://bpy5persbncg3" path="res://assets/The Crusty Crew/Sprites/Fierce Tooth/02-Run/Run 06.png" id="10_llk7y"]
-[ext_resource type="Script" path="res://components/HealthComponent/health_component.gd" id="11_rcfyw"]
+[ext_resource type="Script" path="res://components/HealthComponent/health_component.gd" id="11_5mr16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3vdw"]
 size = Vector2(21, 21)
@@ -80,6 +80,11 @@ _data = {
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_t7wwg")
+speed = null
+max_health = null
+current_health = null
+damage = null
+health_regen = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 1.5)
@@ -119,4 +124,10 @@ target_position = Vector2(-15, 0)
 collision_mask = 2
 
 [node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("11_rcfyw")
+script = ExtResource("11_5mr16")
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthComponent"]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="Timer" type="Timer" parent="HealthComponent"]

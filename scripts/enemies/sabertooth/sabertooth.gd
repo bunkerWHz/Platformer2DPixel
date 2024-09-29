@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var hit_box: HitBox = $Sprite2D/HitBox
+@onready var health_component: HealthComponent = $HealthComponent
 
 @export var speed : float = -60
 @export var max_health: float = 3
@@ -12,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var ground_detecter: RayCast2D = $RayCast2D
 @onready var wall_detecter: RayCast2D = $RayCast2D2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var health_component: HealthComponent = $HealthComponent
+
 
 
 
