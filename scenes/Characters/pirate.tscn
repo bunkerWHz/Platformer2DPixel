@@ -312,7 +312,7 @@ editor_draw_drag_margin = true
 process_mode = 3
 replication_config = SubResource("SceneReplicationConfig_flllh")
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("33_mdhpe")
 
 [connection signal="timeout" from="FSM/Run/RunTimer" to="FSM/Run" method="_on_run_timer_timeout"]

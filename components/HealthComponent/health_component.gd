@@ -3,7 +3,8 @@ class_name HealthComponent
 
 @onready var max_health: float = get_parent().max_health
 @onready var current_health: float = max_health : set = set_current_health, get = get_current_health
-@export var regeneration_rate: float = 1.0
+@onready var health_regen: float = get_parent().health_regen
+
 @export var regeneration_interval: float = 10.0
 @export var immortality: bool = false : set = set_immortality, get = get_immortality
 
@@ -20,8 +21,7 @@ func setup_healthbar() -> void:
 	health_bar.show_percentage = false
 	health_bar.size.x = 32
 	health_bar.size.y = 4
-	health_bar.position.x = -16
-	health_bar.position.y = -24
+
 	
 func _ready():
 	
@@ -41,7 +41,6 @@ func _ready():
 	# Create ProgressBar if it doesn't exist
 	if not has_node("HealthBar"):
 		health_bar = ProgressBar.new()
-		
 		setup_healthbar()
 		add_child(health_bar)
 	else:
@@ -52,9 +51,13 @@ func _ready():
 	health_bar.value = current_health
 	
 	_update_health_bar()
-
-func take_damage(amount: float):
-	current_health = max(0, current_health - amount)
+func _process(_delta: float) -> void:
+	health_bar.position.x = get_parent().global_position.x - 12
+	health_bar.position.y = get_parent().global_position.y - 22
+	
+func take_damage(damage: float):
+	current_health = max(0, current_health - damage)
+	print(damage,"take damage", current_health)
 	_update_health_bar()
 	if current_health == 0:
 		die()
@@ -64,7 +67,7 @@ func heal(amount: float):
 	_update_health_bar()
 
 func _on_regeneration_timer_timeout():
-	heal(regeneration_rate)
+	heal(health_regen)
 
 func _update_health_bar():
 	health_bar.value = current_health
@@ -74,21 +77,6 @@ func die() -> void:
 		Game.respawn_player(get_parent())
 	else:
 		get_parent().queue_free()
-
-# Optional: Function to set custom colors for the health bar
-func set_health_bar_colors(bg_color: Color, fill_color: Color):
-	health_bar.add_theme_color_override("theme_override_colors/background", bg_color)
-	health_bar.add_theme_color_override("theme_override_colors/fill", fill_color)
-
-# Optional: Function to set the position of the health bar relative to the parent
-#func set_health_bar_position(position: Vector2):
-	#health_bar.position = position
-
-# Optional: Function to set the size of the health bar
-func set_health_bar_size(size: Vector2):
-	health_bar.custom_minimum_size = size
-	health_bar.size = size
-
 
 func set_immortality(value: bool) -> void:
 	immortality = value

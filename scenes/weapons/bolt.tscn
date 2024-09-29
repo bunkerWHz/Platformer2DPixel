@@ -19,27 +19,31 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_cdgco")
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0)
-scale = Vector2(0.1, 0.1)
-shape = SubResource("RectangleShape2D_yitwv")
-
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("3_ld358")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-1.5, 0)
-scale = Vector2(0.1, 0.1)
-shape = SubResource("RectangleShape2D_yitwv")
-
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="Sprite2D"]
+position = Vector2(20, 0)
+scale = Vector2(10, 10)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("4_qd6e2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
+position = Vector2(-1.5, 0)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_yitwv")
+
+[node name="HitBox" type="Area2D" parent="Sprite2D"]
+position = Vector2(20, 0)
+scale = Vector2(10, 10)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_ld358")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
+position = Vector2(-1.5, 0)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_yitwv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_yitwv")

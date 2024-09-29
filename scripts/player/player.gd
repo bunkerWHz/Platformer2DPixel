@@ -22,8 +22,8 @@ class_name Player
 @export var death_distance: float = 700.0
 
 
-@export var damage: float = 1
-@export var max_health: float = 5
+@export var damage: float = 3
+@export var max_health: float = 10
 @export var current_health: float
 @export var health_regen: float = 1
 
