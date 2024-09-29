@@ -7,6 +7,7 @@ class_name Player
 @onready var weapon_hitbox: CollisionShape2D = $Sprite2D/HitBox/CollisionShape2D
 @onready var health_component: HealthComponent = $HealthComponent
 
+
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var fsm: Node = $FSM
 @onready var input: Node = $InputHandler
@@ -83,5 +84,6 @@ func die() -> void:
 func take_damage(_damage: float) -> void:
 	health_component.take_damage(damage)
 	
-func heal(_heal_amount: float) -> void:
-	health_component.heal(_heal_amount)
+#func heal(_heal_amount: float) -> void:
+	#health_component.heal(_heal_amount)
+	#
