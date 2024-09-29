@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cr26d0j7jcbgv"]
+[gd_scene load_steps=45 format=3 uid="uid://cr26d0j7jcbgv"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_658fq"]
 [ext_resource type="Texture2D" uid="uid://dm4c1d5i54vc3" path="res://assets/Captain Clown Nose/Captain Clown Nose without Sword/04-Fall/Fall 01.png" id="2_kbcf7"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bkko7gfahuskb" path="res://assets/Captain Clown Nose/Captain Clown Nose without Sword/02-Run/Run 05.png" id="24_1xykx"]
 [ext_resource type="Texture2D" uid="uid://c6qrx5b5d0rt3" path="res://assets/Captain Clown Nose/Captain Clown Nose without Sword/02-Run/Run 06.png" id="25_bgf2y"]
 [ext_resource type="Script" path="res://scripts/fsm/fsm.gd" id="32_u8wb1"]
+[ext_resource type="Script" path="res://components/HealthComponent/health_component.gd" id="33_6xnbg"]
 [ext_resource type="Script" path="res://scripts/player/States/player_idle_state.gd" id="33_bqccs"]
 [ext_resource type="Script" path="res://scripts/player/States/player_run_state.gd" id="34_t7ayo"]
 [ext_resource type="AudioStream" uid="uid://dqp5mf1sy6fto" path="res://assets/Sounds/Steps_1.wav" id="35_ihpyr"]
@@ -310,6 +311,12 @@ editor_draw_drag_margin = true
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 process_mode = 3
 replication_config = SubResource("SceneReplicationConfig_flllh")
+
+[node name="HealthComponent" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_right = 4.0
+offset_bottom = 27.0
+script = ExtResource("33_6xnbg")
 
 [connection signal="timeout" from="FSM/Run/RunTimer" to="FSM/Run" method="_on_run_timer_timeout"]
 [connection signal="timeout" from="FSM/Throw/ThrowingBufferTimer" to="FSM/Throw" method="_on_throwing_buffer_timer_timeout"]

@@ -5,6 +5,7 @@ class_name Player
 @onready var hurt_box: HurtBox = $Sprite2D/HurtBox
 @onready var hit_box: HitBox = $Sprite2D/HitBox
 @onready var weapon_hitbox: CollisionShape2D = $Sprite2D/HitBox/CollisionShape2D
+@onready var health_component: HealthComponent = $HealthComponent
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var fsm: Node = $FSM
@@ -19,8 +20,11 @@ class_name Player
 @export var terminal_velocity: float = 250.0
 @export var death_distance: float = 700.0
 
+
 @export var damage: float = 1
-@export var health: float = 5
+@export var max_health: float = 5
+@export var current_health: float
+@export var health_regen: float = 1
 
 @export var attacking: bool = false
 @export var throwing: bool = false
@@ -55,9 +59,10 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
+	current_health = max_health
 	fsm.change_state("idle")
 	position = Vector2(50, 100)
-	hit_box.Damaged.connect(TakeDamage)
+	hit_box.health_changed.connect(take_damage)
 	
 func _process(_delta: float) -> void:
 	if attacking:
@@ -74,9 +79,9 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	Game.respawn_player(self)
-	health = 2
 	
-func TakeDamage(_damage: float) -> void:
-	health -= damage
-	if health <= 0:
-		die()
+func take_damage(_damage: float) -> void:
+	health_component.take_damage(damage)
+	
+func heal(_heal_amount: float) -> void:
+	health_component.heal(_heal_amount)

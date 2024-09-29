@@ -6,6 +6,6 @@ func _ready() -> void:
 func AreaEntered(hitbox : HitBox) -> void:
 	if hitbox == null:
 		return
-	if owner.has_method("TakeDamage"):
-		owner.TakeDamage(hitbox.damage)
+	if owner.has_method("take_damage"):
+		owner.take_damage(hitbox.damage)
 		

@@ -36,6 +36,7 @@ shape = SubResource("RectangleShape2D_yitwv")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 0
 script = ExtResource("4_qd6e2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

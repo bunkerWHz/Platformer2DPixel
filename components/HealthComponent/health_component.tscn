@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://kjaqmbvfemar"]
+
+[ext_resource type="Script" path="res://components/HealthComponent/health_component.gd" id="1_qyeka"]
+
+[node name="HealthComponent" type="ProgressBar"]
+offset_left = -3.0
+offset_right = 61.0
+offset_bottom = 12.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+script = ExtResource("1_qyeka")
+
+[node name="RegenTickTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RegenTickTimer" to="." method="_on_regen_tick_timer_timeout"]

@@ -19,7 +19,7 @@ size = Vector2(21, 21)
 size = Vector2(25, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtisw"]
-size = Vector2(25, 22)
+size = Vector2(24, 22)
 
 [sub_resource type="Animation" id="Animation_sj2n7"]
 length = 0.001
@@ -95,14 +95,12 @@ position = Vector2(-9, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
 position = Vector2(8, 1)
 shape = SubResource("RectangleShape2D_3d2e0")
-debug_color = Color(0, 0.642757, 0.312215, 0.42)
 
 [node name="HurtBox" parent="Sprite2D" instance=ExtResource("4_bvnu6")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
-position = Vector2(1.5, 1)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wtisw")
-debug_color = Color(0.964443, 1.92523e-07, 0.492728, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -119,7 +117,9 @@ target_position = Vector2(-15, 0)
 collision_mask = 2
 
 [node name="HealthComponent" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = -12.0
+show_percentage = false
 script = ExtResource("11_kbl4g")

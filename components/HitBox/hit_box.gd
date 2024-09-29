@@ -1,8 +1,9 @@
 class_name HitBox extends Area2D
 
 
-signal Damaged( damage: float )
-@export var damage: float = 1
+signal health_changed( _heal_amount: float, _damage: float )
 
-func TakeDamage(_damage: float) -> void:
-	Damaged.emit(damage)
+@onready var damage: float
+
+func take_damage(_damage: float) -> void:
+	health_changed.emit(damage)
