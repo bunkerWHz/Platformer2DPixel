@@ -3,7 +3,7 @@ extends Area2D
 @export var speed: float = 200
 @export var direction: int = 1
 @onready var hit_box: HitBox = $Sprite2D/HitBox
-@export var damage: float = 3
+@export var damage: float = 1
 
 func _ready() -> void:
 	hit_box.health_changed.connect(take_damage)

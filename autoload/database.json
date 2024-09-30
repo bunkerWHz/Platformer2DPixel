@@ -1,0 +1,27 @@
+{
+	"0" :{
+		"texture": "body.png",
+		"slot_type": 2,
+		"ATK": 3
+	},
+	"1" : {
+		"texture": "head.png",
+		"slot_type": 1,
+		"ATK": 2
+	},
+	"2" : {
+		"texture" : "leg.png",
+		"slot_type" : 3,
+		"ATK" : 1
+	},
+	"3" : {
+		"texture" : "helmet.png",
+		"slot_type" : 1,
+		"ATK" : 1
+	},
+	"4" : {
+		"texture" : "sword1.png",
+		"slot_type" : 2,
+		"ATK" : 5
+	},
+}

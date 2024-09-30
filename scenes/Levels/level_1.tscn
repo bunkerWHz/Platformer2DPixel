@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b1kf4l7c4xdnp"]
+[gd_scene load_steps=17 format=4 uid="uid://b1kf4l7c4xdnp"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_bxu0v"]
 [ext_resource type="Texture2D" uid="uid://cypiw3jluv8se" path="res://assets/Palm Tree Island/Sprites/Terrain/Terrain (32x32).png" id="1_i7acw"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://clias7ls7v6cy" path="res://scenes/collectables/checkpoint.tscn" id="6_j44co"]
 [ext_resource type="Texture2D" uid="uid://boeg3te2ps3el" path="res://assets/Palm Tree Island/Sprites/Background/Big Clouds.png" id="7_nhgax"]
 [ext_resource type="Texture2D" uid="uid://d3lq5orp5j68" path="res://assets/Palm Tree Island/Sprites/Background/BG Image.png" id="8_gdncs"]
+[ext_resource type="PackedScene" uid="uid://0f2gn1enw23m" path="res://UI/abstract_item.tscn" id="13_5udkr"]
 [ext_resource type="PackedScene" uid="uid://vqmtpa5rp1eq" path="res://scenes/Enemies/Sabertooth/sabertooth.tscn" id="13_ifxaw"]
 [ext_resource type="PackedScene" uid="uid://dq6wgo3ns6rse" path="res://scenes/collectables/sword.tscn" id="43_jawqn"]
 
@@ -499,6 +500,10 @@ spawnspoint = true
 
 [node name="Checkpoint4" parent="Interactable/Checkpoints" instance=ExtResource("6_j44co")]
 position = Vector2(856, 304)
+
+[node name="AbstractItem" parent="Interactable" instance=ExtResource("13_5udkr")]
+position = Vector2(336, 272)
+ID = "4"
 
 [node name="Players" type="Node2D" parent="."]
 

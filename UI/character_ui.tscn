@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://b26nf5w6kmwan"]
+
+[ext_resource type="Script" path="res://UI/CharacterUI.gd" id="1_j8ecg"]
+[ext_resource type="Script" path="res://UI/inventory.gd" id="2_82uvr"]
+[ext_resource type="PackedScene" uid="uid://btikilaknc45p" path="res://UI/slot.tscn" id="3_ou101"]
+[ext_resource type="Script" path="res://UI/character.gd" id="4_xb4ji"]
+[ext_resource type="PackedScene" uid="uid://dcwr4h4tnilw2" path="res://UI/passive_slot.tscn" id="5_35s7j"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_j8ecg")
+
+[node name="Inventory" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_right = 278.0
+offset_bottom = 104.0
+columns = 3
+script = ExtResource("2_82uvr")
+
+[node name="slot2" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot7" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot8" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot9" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot10" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot3" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot6" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot4" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="slot5" parent="Inventory" instance=ExtResource("3_ou101")]
+layout_mode = 2
+
+[node name="Character" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_xb4ji")
+
+[node name="PassiveSlot" parent="Character" instance=ExtResource("5_35s7j")]
+layout_mode = 0
+slot_type = 1
+
+[node name="PassiveSlot2" parent="Character" instance=ExtResource("5_35s7j")]
+layout_mode = 0
+offset_top = 47.0
+offset_bottom = 87.0
+slot_type = 2
+
+[node name="PassiveSlot3" parent="Character" instance=ExtResource("5_35s7j")]
+layout_mode = 0
+offset_top = 96.0
+offset_bottom = 136.0
+slot_type = 3
+
+[node name="ATK" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 51.0
+offset_top = 111.0
+offset_right = 91.0
+offset_bottom = 134.0
+text = "0"
