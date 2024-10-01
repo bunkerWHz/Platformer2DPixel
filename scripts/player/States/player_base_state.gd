@@ -5,7 +5,7 @@ var input:
 	get: return object.input
 
 func play(animation: String) -> void:
-	if object.sword and object.animation.has_animation(animation + "_sword"):
+	if object.melee_weapon and object.animation.has_animation(animation + "_sword"):
 		animation += "_sword"
 	object.animation.play(animation)
 	

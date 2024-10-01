@@ -4,6 +4,7 @@ extends Node2D
 @onready var pause_menu: CanvasLayer = $PauseMenu
 @onready var world: Node2D = $World
 @onready var transition: CanvasLayer = $Transition
+@onready var ui: Control = $InGameUI/UI
 
 var peer = ENetMultiplayerPeer.new()
 var level_1 = preload("res://scenes/Levels/level_1.tscn")
@@ -23,6 +24,7 @@ func start():
 func add_player(id = 1):
 	var player = pirate.instantiate()
 	player.name = str(id)
+	Game.players.append(player)
 	add_child(player, true)
 	
 func _ready() -> void:

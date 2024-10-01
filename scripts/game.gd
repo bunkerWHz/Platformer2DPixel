@@ -4,7 +4,7 @@ var main
 var current_checkpoint : Checkpoint
 
 signal gold_coins_gained(int)
-
+var players: Array = []
 var gold_coins: int
 
 func gold_coins_gain(coins_gained: int) -> void:

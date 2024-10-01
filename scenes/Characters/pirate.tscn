@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cr26d0j7jcbgv"]
+[gd_scene load_steps=45 format=3 uid="uid://cr26d0j7jcbgv"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_658fq"]
 [ext_resource type="Texture2D" uid="uid://dm4c1d5i54vc3" path="res://assets/Captain Clown Nose/Captain Clown Nose without Sword/04-Fall/Fall 01.png" id="2_kbcf7"]
@@ -23,7 +23,6 @@
 [ext_resource type="Script" path="res://scripts/player/States/player_idle_state.gd" id="33_bqccs"]
 [ext_resource type="Script" path="res://components/HealthComponent/health_component.gd" id="33_mdhpe"]
 [ext_resource type="Script" path="res://scripts/player/States/player_run_state.gd" id="34_t7ayo"]
-[ext_resource type="PackedScene" uid="uid://b26nf5w6kmwan" path="res://UI/character_ui.tscn" id="34_uam4a"]
 [ext_resource type="AudioStream" uid="uid://dqp5mf1sy6fto" path="res://assets/Sounds/Steps_1.wav" id="35_ihpyr"]
 [ext_resource type="Script" path="res://scripts/player/States/player_jump_state.gd" id="36_7trri"]
 [ext_resource type="AudioStream" uid="uid://psn5v8r73puf" path="res://assets/Sounds/Jump_3.wav" id="37_7io0c"]
@@ -35,8 +34,8 @@
 [ext_resource type="PackedScene" uid="uid://3ciajv5607p5" path="res://components/HitBox/hit_box.tscn" id="46_fvb7h"]
 [ext_resource type="PackedScene" uid="uid://bcvrlnocn57at" path="res://components/HurtBox/hurt_box.tscn" id="47_x3k2m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vuhd4"]
-radius = 9.25
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqhc8"]
+size = Vector2(6.5, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ol4w0"]
 radius = 9.0
@@ -79,6 +78,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(10.75, -9)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_kcl11"]
 resource_name = "attack"
@@ -119,6 +130,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(10.75, -9), Vector2(17, 4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/HitBox/CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_wprao"]
@@ -222,7 +245,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
 position = Vector2(10.75, -9)
-shape = SubResource("CircleShape2D_vuhd4")
+shape = SubResource("RectangleShape2D_nqhc8")
 
 [node name="HurtBox" parent="Sprite2D" instance=ExtResource("47_x3k2m")]
 collision_mask = 1
@@ -230,6 +253,9 @@ collision_mask = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ol4w0")
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(10, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -315,9 +341,6 @@ replication_config = SubResource("SceneReplicationConfig_flllh")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("33_mdhpe")
-
-[node name="UI" parent="." instance=ExtResource("34_uam4a")]
-process_mode = 3
 
 [connection signal="damage_changed" from="." to="Sprite2D/HitBox" method="_on_player_damage_changed"]
 [connection signal="timeout" from="FSM/Run/RunTimer" to="FSM/Run" method="_on_run_timer_timeout"]

@@ -16,3 +16,6 @@ func resume() -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		pause()
+		
+func _ready() -> void:
+	print(Game.players[0].damage)

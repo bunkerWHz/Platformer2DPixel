@@ -1,16 +1,16 @@
 {
 	"0" :{
-		"texture": "body.png",
+		"texture": "armor.png",
 		"slot_type": 2,
 		"ATK": 3
 	},
 	"1" : {
-		"texture": "head.png",
+		"texture": "helmet.png",
 		"slot_type": 1,
 		"ATK": 2
 	},
 	"2" : {
-		"texture" : "leg.png",
+		"texture" : "boots.png",
 		"slot_type" : 3,
 		"ATK" : 1
 	},

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var number: int
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hurt_box: HurtBox = $Sprite2D/HurtBox
 @onready var hit_box: HitBox = $Sprite2D/HitBox
@@ -35,11 +36,11 @@ signal damage_changed(new_damage: float)
 @export var attacking: bool = false
 @export var throwing: bool = false
 
-var sword: bool = false:
-	get: return sword
+var melee_weapon: bool = false:
+	get: return melee_weapon
 	set(value):
-		if sword == value: return
-		sword = value
+		if melee_weapon == value: return
+		melee_weapon = value
 		var current_anim = animation.current_animation
 		var target_anim = current_anim
 		if value:

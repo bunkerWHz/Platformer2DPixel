@@ -6,7 +6,7 @@ extends Area2D
 func _on_player_entered(_body: Node2D) -> void:
 	sfx.play()
 	if _body is Player:
-		_body.sword = true
+		_body.melee_weapon = true
 	sprite.visible = false
 	collision.set_deferred("disabled", true)
 	

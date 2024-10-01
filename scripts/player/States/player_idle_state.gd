@@ -8,7 +8,8 @@ func physics_update(delta: float) -> void:
 	
 	if input.jump_just_pressed:
 		change_state("jump")
-	elif not object.is_on_floor():
+	elif not object.is_on_floor() or input.jump_just_pressed and Input.is_action_pressed("btn_down"):
+		owner.position.y += 1
 		change_state("fall")
 	elif input.x != 0:
 		change_state("run")
