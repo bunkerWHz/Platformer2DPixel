@@ -8,7 +8,7 @@ var peer = ENetMultiplayerPeer.new()
 
 func add_player(id):
 	Game.add_player(id)
-	Game.players.append(id)
+	
 func _on_create_host_pressed() -> void:
 	peer.create_server(port, 2)
 	multiplayer.multiplayer_peer = peer

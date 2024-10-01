@@ -9,7 +9,7 @@ offset_bottom = 40.0
 script = ExtResource("1_0loqc")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(51, 51)
 layout_mode = 2
 expand_mode = 3
 script = ExtResource("2_j50hx")

@@ -15,9 +15,9 @@
 		"ATK" : 1
 	},
 	"3" : {
-		"texture" : "helmet.png",
-		"slot_type" : 1,
-		"ATK" : 1
+		"texture" : "bow.png",
+		"slot_type" : 4,
+		"ATK" : 10
 	},
 	"4" : {
 		"texture" : "sword1.png",

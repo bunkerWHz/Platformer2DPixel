@@ -23,7 +23,7 @@ func get_preview():
 	
 	preview_texture.texture = texture_rect.texture
 	preview_texture.expand_mode = 1
-	preview_texture.size = Vector2(24, 24)
+	preview_texture.size = Vector2(51, 51)
 	var preview = Control.new()
 	preview.add_child(preview_texture)
 	return preview

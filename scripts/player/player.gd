@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var number: int
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hurt_box: HurtBox = $Sprite2D/HurtBox
 @onready var hit_box: HitBox = $Sprite2D/HitBox
-@onready var weapon_hitbox: CollisionShape2D = $Sprite2D/HitBox/CollisionShape2D
+@onready var weapon_hitbox: CollisionShape2D = $Sprite2D/HitBox/WeaponCollision
 @onready var health_component: HealthComponent = $HealthComponent
-
+@onready var weapon_marker: Marker2D = $Sprite2D/WeaponMarker
+@onready var weapon: Sprite2D = $Sprite2D/Weapon
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var fsm: Node = $FSM
@@ -36,22 +36,11 @@ signal damage_changed(new_damage: float)
 @export var attacking: bool = false
 @export var throwing: bool = false
 
-var melee_weapon: bool = false:
+@export var melee_weapon: bool = false:
 	get: return melee_weapon
 	set(value):
 		if melee_weapon == value: return
 		melee_weapon = value
-		var current_anim = animation.current_animation
-		var target_anim = current_anim
-		if value:
-			target_anim += "_sword"
-		else:
-			target_anim = target_anim.replace("_sword", "")
-		if animation.has_animation(target_anim):
-			var progress = animation.frame_progress
-			var frame = animation.frame
-			animation.play(target_anim)
-			animation.set_frame_and_progress(frame, progress)
 			
 			
 var direction = 1: 
@@ -67,11 +56,18 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
+	Game.player = self
 	current_health = max_health
 	fsm.change_state("idle")
 	position = Vector2(50, 100)
 	hit_box.health_changed.connect(take_damage)
 	
+	weapon_hitbox.position = weapon_marker.position
+	if melee_weapon:
+		weapon.position = weapon_marker.position
+		#weapon_hitbox.shape.size.x = weapon.size.x
+		#weapon_hitbox.shape.size.y = weapon.size.y
+		#
 func _process(_delta: float) -> void:
 	pass
 		
@@ -95,3 +91,6 @@ func take_damage() -> void:
 #func heal(_heal_amount: float) -> void:
 	#health_component.heal(_heal_amount)
 	#
+
+func update_weapon_texture(texture):
+	weapon.texture = texture

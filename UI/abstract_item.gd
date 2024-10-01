@@ -4,8 +4,8 @@ extends Sprite2D
 
 func _ready() -> void:
 	texture = load("res://assets/items/" + ItemData.get_texture(ID))
-	scale.x = 0.1
-	scale.y = 0.1
+	scale.x = 0.05
+	scale.y = 0.05
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:

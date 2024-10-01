@@ -9,4 +9,4 @@ func calculate():
 		
 	atk.text = str(sum)
 	
-	Game.players[Game.players.find(self)].damage = sum
+	Game.player.damage = sum

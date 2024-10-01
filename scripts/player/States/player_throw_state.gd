@@ -10,7 +10,6 @@ var proj = preload("res://scenes/weapons/bolt.tscn")
 func enter() -> void:
 	object.throwing = true
 	throwing_buffer_timer.start()
-	play("attack")
 	
 	var new_proj = proj.instantiate()
 	new_proj.direction = object.direction

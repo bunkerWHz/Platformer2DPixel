@@ -24,8 +24,9 @@ func start():
 func add_player(id = 1):
 	var player = pirate.instantiate()
 	player.name = str(id)
-	Game.players.append(player)
 	add_child(player, true)
+	Game.players.append(player)
+	print(Game.players[Game.players.find(self)] )
 	
 func _ready() -> void:
 	Game.main = self
