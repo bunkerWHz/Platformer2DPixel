@@ -57,7 +57,7 @@ func _process(_delta: float) -> void:
 	
 func take_damage(damage: float):
 	current_health = max(0, current_health - damage)
-	print(damage,"take damage", current_health)
+	print(damage," <= damage, take damage, current healths = ", current_health)
 	_update_health_bar()
 	if current_health == 0:
 		die()
@@ -100,7 +100,7 @@ func set_temporary_immortality(time: float) -> void:
 func set_current_health(value: float) -> void:
 	if value <= current_health and immortality:
 		return
-	var min_health = clampi(value, 0, max_health)
+	var min_health = clampf(value, 0, max_health)
 	if min_health != current_health:
 		var diff = min_health - current_health
 		current_health = value

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 
 @export var speed : float = -60
-@export var max_health: float = 3
+@export var max_health: float = 10
 @export var current_health: float 
 @export var damage: float = 1
 @export var health_regen: float = 0.5

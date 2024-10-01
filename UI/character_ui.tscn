@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b26nf5w6kmwan"]
+[gd_scene load_steps=7 format=3 uid="uid://b26nf5w6kmwan"]
 
 [ext_resource type="Script" path="res://UI/CharacterUI.gd" id="1_j8ecg"]
 [ext_resource type="Script" path="res://UI/inventory.gd" id="2_82uvr"]
 [ext_resource type="PackedScene" uid="uid://btikilaknc45p" path="res://UI/slot.tscn" id="3_ou101"]
 [ext_resource type="Script" path="res://UI/character.gd" id="4_xb4ji"]
 [ext_resource type="PackedScene" uid="uid://dcwr4h4tnilw2" path="res://UI/passive_slot.tscn" id="5_35s7j"]
+[ext_resource type="PackedScene" uid="uid://nloq1a3uxtuc" path="res://UI/active_slot.tscn" id="6_i74mf"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -17,8 +18,8 @@ script = ExtResource("1_j8ecg")
 
 [node name="Inventory" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 52.0
-offset_right = 278.0
+offset_left = 123.0
+offset_right = 349.0
 offset_bottom = 104.0
 columns = 3
 script = ExtResource("2_82uvr")
@@ -59,25 +60,39 @@ script = ExtResource("4_xb4ji")
 
 [node name="PassiveSlot" parent="Character" instance=ExtResource("5_35s7j")]
 layout_mode = 0
+offset_left = 47.0
+offset_right = 87.0
 slot_type = 1
 
 [node name="PassiveSlot2" parent="Character" instance=ExtResource("5_35s7j")]
 layout_mode = 0
+offset_left = 47.0
 offset_top = 47.0
+offset_right = 87.0
 offset_bottom = 87.0
 slot_type = 2
 
 [node name="PassiveSlot3" parent="Character" instance=ExtResource("5_35s7j")]
 layout_mode = 0
+offset_left = 47.0
 offset_top = 96.0
+offset_right = 87.0
 offset_bottom = 136.0
 slot_type = 3
+
+[node name="ActiveSlot" parent="Character" instance=ExtResource("6_i74mf")]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 47.0
+offset_right = 42.0
+offset_bottom = 87.0
+slot_type = 4
 
 [node name="ATK" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 111.0
-offset_right = 91.0
-offset_bottom = 134.0
+offset_left = 3.0
+offset_top = 103.0
+offset_right = 43.0
+offset_bottom = 126.0
 text = "0"

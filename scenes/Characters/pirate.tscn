@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cr26d0j7jcbgv"]
+[gd_scene load_steps=46 format=3 uid="uid://cr26d0j7jcbgv"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_658fq"]
 [ext_resource type="Texture2D" uid="uid://dm4c1d5i54vc3" path="res://assets/Captain Clown Nose/Captain Clown Nose without Sword/04-Fall/Fall 01.png" id="2_kbcf7"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/player/States/player_idle_state.gd" id="33_bqccs"]
 [ext_resource type="Script" path="res://components/HealthComponent/health_component.gd" id="33_mdhpe"]
 [ext_resource type="Script" path="res://scripts/player/States/player_run_state.gd" id="34_t7ayo"]
+[ext_resource type="PackedScene" uid="uid://b26nf5w6kmwan" path="res://UI/character_ui.tscn" id="34_uam4a"]
 [ext_resource type="AudioStream" uid="uid://dqp5mf1sy6fto" path="res://assets/Sounds/Steps_1.wav" id="35_ihpyr"]
 [ext_resource type="Script" path="res://scripts/player/States/player_jump_state.gd" id="36_7trri"]
 [ext_resource type="AudioStream" uid="uid://psn5v8r73puf" path="res://assets/Sounds/Jump_3.wav" id="37_7io0c"]
@@ -315,5 +316,9 @@ replication_config = SubResource("SceneReplicationConfig_flllh")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("33_mdhpe")
 
+[node name="UI" parent="." instance=ExtResource("34_uam4a")]
+process_mode = 3
+
+[connection signal="damage_changed" from="." to="Sprite2D/HitBox" method="_on_player_damage_changed"]
 [connection signal="timeout" from="FSM/Run/RunTimer" to="FSM/Run" method="_on_run_timer_timeout"]
 [connection signal="timeout" from="FSM/Throw/ThrowingBufferTimer" to="FSM/Throw" method="_on_throwing_buffer_timer_timeout"]

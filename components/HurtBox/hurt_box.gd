@@ -7,6 +7,5 @@ func AreaEntered(hitbox : HitBox) -> void:
 	if hitbox == null:
 		return
 	if owner.has_method("take_damage"):
-		print(hitbox.damage, "hurt")
 		owner.health_component.take_damage(hitbox.damage)
 		

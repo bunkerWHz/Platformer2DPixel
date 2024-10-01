@@ -1,4 +1,5 @@
 extends Control
+@onready var inventory: GridContainer = $Inventory
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):

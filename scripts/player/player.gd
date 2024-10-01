@@ -21,8 +21,13 @@ class_name Player
 @export var terminal_velocity: float = 250.0
 @export var death_distance: float = 700.0
 
-
-@export var damage: float = 3
+signal damage_changed(new_damage: float)
+@export var damage: float = 1 : 
+	get : return damage
+	set(value):
+		damage = value
+		damage_changed.emit(value)
+		
 @export var max_health: float = 10
 @export var current_health: float
 @export var health_regen: float = 1
@@ -55,7 +60,8 @@ var direction = 1:
 		direction = value
 		sprite.scale.x = direction
 		
-		
+
+	
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
@@ -66,22 +72,23 @@ func _ready() -> void:
 	hit_box.health_changed.connect(take_damage)
 	
 func _process(_delta: float) -> void:
-	if attacking:
-		weapon_hitbox.disabled = false
-	else:
-		weapon_hitbox.disabled = true
+	pass
+		
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
 		input.update()
 		fsm.physics_update(delta)
-		
+	if attacking:
+		weapon_hitbox.disabled = false
+	else:
+		weapon_hitbox.disabled = true
 	if position.y >= death_distance:
 		die()
 
 func die() -> void:
 	Game.respawn_player(self)
 	
-func take_damage(_damage: float) -> void:
+func take_damage() -> void:
 	health_component.take_damage(damage)
 	
 #func heal(_heal_amount: float) -> void:

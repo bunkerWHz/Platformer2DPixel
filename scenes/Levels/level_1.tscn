@@ -505,8 +505,6 @@ position = Vector2(856, 304)
 position = Vector2(336, 272)
 ID = "4"
 
-[node name="Players" type="Node2D" parent="."]
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Sabertooth" parent="Enemies" instance=ExtResource("13_ifxaw")]
