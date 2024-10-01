@@ -21,7 +21,7 @@
 	},
 	"4" : {
 		"texture" : "sword1.png",
-		"slot_type" : 2,
+		"slot_type" : 4,
 		"ATK" : 5
 	},
 }
